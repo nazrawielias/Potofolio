@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/501095b4e6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="header">
+        <div id="container">
+            <nav>
+                <h1 id="logo"> <span>N</span>azrawi.</h1>
+                <i id="menu_mark" class="fa-solid fa-bars" onclick="openmenu()"></i>
+                <ul id="sidemenu">
+                    <li><span><i id="close_mark" class="fa-solid fa-xmark" onclick="closemenu()"></i></span></li><br>
+                    <li><span><a href="#header">Home</a></span></li>
+                    <li><span><a href="#about">About</a></span> </li>
+                    <li><span><a href="#services">Services</a></span></li>
+                    <li><span><a href="#portfolio">Portofolio</a></span></li>
+                    <li><span><a href="#contact">Contact</a></span></li>
+                </ul>
+
+            </nav>
+            <div class="header-text">
+                <p>Web Developer</p>
+                <h1>Hi, I'am <span>Nazrawi</span> <br> Amanuel From Kampala</h1>
+            </div>
+        </div>
+    </div>
+<!-----------------about----------->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col1">
+                    <img src="aboutme.jpg" alt="">
+                </div>
+                <div class="col2">
+                    <h1 id="subtitle">About Me</h1>
+                    <p>Experienced full-stack and RPA developer with more than two years of experience in the industry.Seeking to<br>
+                       leverage high proficiency in SQL, Python, JavaScript and CSS in a full-time career as a full-stack developer<br>
+                       for NICE (National Insurance Corporation of Eritrea) and IP-Tech (Eritrean Digital transformation enabler)<br>
+                       with more than one year experience. Qualities of fast learning and blend in the environment to quickly adapting<br>
+                       the situations and culture is a rare quality and these strengths are helpful to work in a multi-cultural work<br>
+                       diversity. Respectful to multi-cultural society and ability to effectively work with stability under pressure<br>
+                       is another quality is mastered. With combination of these qualities, I could be a fine asset for any organization.</p>
+                       <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="opentab('skills', event)">Skills</p>
+                        <p class="tab-links" onclick="opentab('experience', event)">Experience</p>
+                        <p class="tab-links" onclick="opentab('education', event)">Education</p>
+                    </div>
+                    <div class="tab-contents active-tab" id='skills'>
+                        <ul>
+                            <li><span>UI/UX</span><br> Design Web</li>
+                            <li><span>Web Development</span><br> Web App Development </li>
+                            <li><span>App Development</span><br> PC Application Development</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id='experience'>
+                        <ul>
+                            <li><span>10/2020 - 09/2023</span><br> Full Stack Developer at National Insurance Corporation Of Eritrea</li>
+                            <li><span>04/2018 - 12/2019</span><br> RPA Developer at Eritrean Digital transformation enabler </li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id='education'>
+                        <ul>
+                            <li><span>June, 2019</span><br> Advanced Diploma: Programming and Web designing at Poly Tech Vocational Training Center</li>
+                            <li><span>June, 2018</span><br> Advanced Diploma: Basic Robotics Engineering at Students Educational and Discovery Center</li>
+                            <li><span>June, 2017</span><br> Advanced Diploma: Hardware Engineering and Networking at Delta Institute of Information System</li>
+                            <li><span>July, 2022</span><br> Certificate of High School Achievement at Sawa High School</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!----------------services-------------->
+    <div id="services">
+        <div class="container">
+            <h1 id="sub-title">My Services</h1>
+            <div class="service-list">
+                <div>
+                    <h2>Web Design</h2>
+                    <p> We create visually stunning, user-friendly websites<br>
+                        that captivate your audience and drive results.</p>
+                    <a href="#">Learn more</a>
+                </div>
+                
+                <div>
+                    <i class="fas fa-code"></i>
+                    <h2>UI/UX Design</h2>
+                    <p>We create visually stunning, user-friendly websites<br>
+                       that captivate your audience and drive results.</p>
+                    <a href="#">Learn more</a>
+                </div>
+                <div>
+                    <h2>App Design</h2>
+                    <p>We create visually stunning, user-friendly websites<br>
+                       that captivate your audience and drive results.</p>
+                    <a href="#">Learn more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---------------portfolio------------->
+    <div id="portfolio">
+        <div class="container">
+            <h1 id="sub-title">My Work</h1>
+            <div class="work-list">
+                <div class="work">
+                    <img src="work1.jpg" style="height: 100%;" alt="">
+                    <div class="layer">
+                        <h3>Social Media App</h3>
+                        <p> The app connects you to the talented people around the world.
+                            Downoad it from playstore.</p>
+                        <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="work2.jpg" alt="">
+                    <div class="layer">
+                        <h3>Music App</h3>
+                        <p> The app connects you to the talented people around the world.
+                            Downoad it from playstore.</p>
+                        <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="work3.jpg" alt="">
+                    <div class="layer">
+                        <h3>Online Shopping App</h3>
+                        <p> The app connects you to the talented people around the world.
+                            Downoad it from playstore.</p>
+                        <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="btn">See more</a>
+        </div>
+    </div>
+
+    <!--------------contact----------->
+    
+    <div id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-left">
+                    <h1 class="sub-title">Contact Me</h1>
+                    <p><i class="fa-solid fa-paper-plane"></i> nazrawizazu@gmail.com</p>
+                    <p><i class="fa-solid fa-square-phone"></i> 0709079360</p>
+                    <div class="social-icons">
+                        <a href="https://facebook.com/"><i class="fab fa-facebook"></i></a>
+                        <a href=""><i class="fab fa-twitter-square"></i></a>
+                        <a href=""><i class="fab fa-instagram"></i></a>
+                        <a href=""><i class="fab fa-linkedin"></i></a>
+                    </div>
+                    <a href="CV Nazrawi Amanuel.  (Updated 31st of July, 2024).pdf" class="btn btn2">Download CV</a>
+                </div>
+                <div class="contact-right">
+                    <form action="">
+                        <input type="text" name="Name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                        <button type="submit" class="btn btn2"> Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>Copyright Made By Nazrawi</p>
+        </div>
+    </div>
+
+    <script>
+        function opentab(tabname, event){
+            var tablinks = document.getElementsByClassName('tab-links');
+            var tabcontents = document.getElementsByClassName('tab-contents');
+    
+            for (var tablink of tablinks) {
+                tablink.classList.remove("active-link");
+            }
+            for (var tabcontent of tabcontents) {
+                tabcontent.classList.remove("active-tab");
+            }
+            event.currentTarget.classList.add('active-link');
+            document.getElementById(tabname).classList.add("active-tab");
+        }
+    </script>   
+    <script>
+        var sidemenu=document.getElementById("sidemenu");
+        sidemenu.style.right="-500px";
+
+        function openmenu(){
+            sidemenu.style.right="0";
+        }
+
+        function closemenu(){
+            sidemenu.style.right="-500px";
+        }
+    </script>         
+</body>
+</html>
