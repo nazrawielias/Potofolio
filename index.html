@@ -2,202 +2,642 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://kit.fontawesome.com/501095b4e6.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Nazrawi Elias | Full-Stack Developer & AI Enthusiast</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', system-ui, sans-serif;
+        }
+        body {
+            background-color: #0a0a0a;
+            color: #fff;
+            scroll-behavior: smooth;
+        }
+        /* Header with subtle overlay */
+        #header {
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, #0a0f1e 0%, #0f172a 100%);
+            position: relative;
+        }
+        .container {
+            padding: 10px 8%;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding-top: 20px;
+        }
+        #logo {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #fff, #ff6b6b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        #logo span {
+            background: linear-gradient(135deg, #ff6b6b, #ff004f);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        nav ul li {
+            display: inline-block;
+            list-style: none;
+            margin: 10px 20px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            position: relative;
+            transition: 0.3s;
+        }
+        nav ul li a::after {
+            content: '';
+            width: 0%;
+            height: 3px;
+            background: #ff6b6b;
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            transition: 0.3s;
+        }
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        .header-text {
+            margin-top: 15%;
+            text-align: left;
+        }
+        .header-text p {
+            font-size: 22px;
+            color: #ff6b6b;
+            letter-spacing: 2px;
+        }
+        .header-text h1 {
+            font-size: 58px;
+            margin-top: 15px;
+            line-height: 1.2;
+        }
+        .header-text h1 span {
+            color: #ff6b6b;
+        }
+        .header-text .highlight-badge {
+            display: inline-block;
+            background: rgba(255,107,107,0.2);
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-size: 14px;
+            margin-top: 25px;
+            border: 1px solid #ff6b6b;
+        }
+        /* menu icons */
+        #menu_mark, #close_mark {
+            display: none;
+            cursor: pointer;
+            font-size: 28px;
+        }
+        /* about */
+        #about {
+            padding: 80px 0;
+            background: #0f0f13;
+        }
+        .row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        .col1 {
+            flex-basis: 35%;
+        }
+        .col1 img {
+            width: 100%;
+            border-radius: 30px;
+            object-fit: cover;
+            height: auto;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,107,107,0.2);
+        }
+        .col2 {
+            flex-basis: 58%;
+        }
+        #subtitle {
+            font-size: 46px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff, #ff9a6b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .col2 p {
+            line-height: 1.6;
+            margin-bottom: 25px;
+            color: #cbd5e1;
+        }
+        .tab-titles {
+            display: flex;
+            margin: 30px 0 25px;
+            gap: 35px;
+            flex-wrap: wrap;
+        }
+        .tab-links {
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            position: relative;
+            color: #94a3b8;
+            transition: 0.2s;
+        }
+        .tab-links::after {
+            content: '';
+            width: 0;
+            height: 3px;
+            background: #ff6b6b;
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            transition: 0.3s;
+        }
+        .tab-links.active-link {
+            color: #ff6b6b;
+        }
+        .tab-links.active-link::after {
+            width: 100%;
+        }
+        .tab-contents ul li {
+            list-style: none;
+            margin: 18px 0;
+            color: #cbd5e1;
+            line-height: 1.5;
+        }
+        .tab-contents ul li span {
+            color: #ff6b6b;
+            font-weight: 600;
+            font-size: 16px;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+        .tab-contents {
+            display: none;
+        }
+        .tab-contents.active-tab {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        /* services */
+        #services {
+            padding: 60px 0;
+            background: #0a0a0e;
+        }
+        #sub-title {
+            font-size: 46px;
+            font-weight: 600;
+            margin-bottom: 50px;
+            text-align: center;
+            background: linear-gradient(135deg, #fff, #ff9a6b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .service-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+        }
+        .service-list div {
+            background: #14141c;
+            padding: 35px 25px;
+            border-radius: 24px;
+            transition: all 0.3s;
+            border: 1px solid rgba(255,107,107,0.1);
+            text-align: center;
+        }
+        .service-list div:hover {
+            background: #1c1c28;
+            transform: translateY(-8px);
+            border-color: #ff6b6b;
+            box-shadow: 0 15px 30px rgba(255,107,107,0.1);
+        }
+        .service-list div i {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #ff6b6b;
+        }
+        .service-list div h2 {
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        .service-list div p {
+            color: #a0aec0;
+            line-height: 1.5;
+        }
+        /* portfolio - clean & minimal with code links */
+        #portfolio {
+            padding: 60px 0;
+            background: #0f0f13;
+        }
+        .work-list {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        .work {
+            flex: 1;
+            min-width: 320px;
+            max-width: 500px;
+            border-radius: 28px;
+            position: relative;
+            overflow: hidden;
+            background: #14141c;
+            border: 1px solid rgba(255,107,107,0.2);
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .work:hover {
+            transform: translateY(-6px);
+            border-color: #ff6b6b;
+            box-shadow: 0 20px 30px rgba(0,0,0,0.4);
+        }
+        .work img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            display: block;
+            transition: 0.4s;
+        }
+        .work:hover img {
+            transform: scale(1.02);
+        }
+        .layer {
+            padding: 20px 22px 25px;
+            background: linear-gradient(to top, #0f0f13, #14141c);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .layer h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #ff6b6b;
+        }
+        .layer p {
+            font-size: 14px;
+            color: #cbd5e1;
+            line-height: 1.5;
+            margin-bottom: 18px;
+        }
+        .code-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            border: 1.5px solid #ff6b6b;
+            padding: 8px 22px;
+            border-radius: 40px;
+            text-decoration: none;
+            color: #ff6b6b;
+            font-size: 14px;
+            font-weight: 500;
+            transition: 0.25s;
+            width: fit-content;
+            cursor: pointer;
+        }
+        .code-link i {
+            font-size: 14px;
+        }
+        .code-link:hover {
+            background: #ff6b6b;
+            color: #fff;
+            transform: scale(1.02);
+        }
+        .btn {
+            display: inline-block;
+            margin: 40px auto 0;
+            width: fit-content;
+            border: 1.5px solid #ff6b6b;
+            padding: 12px 32px;
+            border-radius: 40px;
+            text-decoration: none;
+            color: #fff;
+            transition: 0.3s;
+            background: transparent;
+            font-weight: 500;
+        }
+        .btn:hover {
+            background: #ff6b6b;
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(255,107,107,0.3);
+        }
+        /* contact */
+        #contact {
+            padding: 70px 0;
+            background: #0a0a0e;
+        }
+        .contact-left {
+            flex-basis: 35%;
+        }
+        .contact-right {
+            flex-basis: 55%;
+        }
+        .contact-left p {
+            margin-top: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .contact-left p i {
+            color: #ff6b6b;
+            font-size: 22px;
+            width: 30px;
+        }
+        .social-icons {
+            margin-top: 35px;
+            display: flex;
+            gap: 20px;
+        }
+        .social-icons a {
+            text-decoration: none;
+            font-size: 28px;
+            color: #94a3b8;
+            transition: 0.2s;
+        }
+        .social-icons a:hover {
+            color: #ff6b6b;
+            transform: translateY(-3px);
+        }
+        .btn.btn2 {
+            background: #ff6b6b;
+            border: none;
+            margin-top: 25px;
+            display: inline-block;
+        }
+        .contact-right form {
+            width: 100%;
+        }
+        form input, form textarea {
+            width: 100%;
+            border: 0;
+            outline: none;
+            background: #1a1a24;
+            padding: 14px 18px;
+            margin: 12px 0;
+            color: #fff;
+            border-radius: 16px;
+            font-size: 16px;
+            transition: 0.2s;
+            border: 1px solid transparent;
+        }
+        form input:focus, form textarea:focus {
+            border-color: #ff6b6b;
+            background: #20202c;
+        }
+        form .btn2 {
+            padding: 12px 35px;
+            cursor: pointer;
+            border: none;
+            font-weight: 600;
+        }
+        .copyright {
+            text-align: center;
+            padding: 25px 0;
+            background: #050508;
+            font-size: 14px;
+            color: #64748b;
+            border-top: 1px solid #1e1e2a;
+        }
+        @media (max-width: 800px) {
+            .container {
+                padding: 10px 5%;
+            }
+            .header-text h1 {
+                font-size: 36px;
+            }
+            .col1, .col2, .contact-left, .contact-right {
+                flex-basis: 100%;
+            }
+            nav ul {
+                background: #14141c;
+                position: fixed;
+                top: 0;
+                right: -500px;
+                width: 240px;
+                height: 100vh;
+                padding-top: 60px;
+                z-index: 2;
+                transition: 0.3s;
+                border-radius: 20px 0 0 20px;
+                backdrop-filter: blur(10px);
+            }
+            nav ul li {
+                display: block;
+                margin: 25px;
+            }
+            #menu_mark, #close_mark {
+                display: block;
+            }
+            #close_mark {
+                position: absolute;
+                top: 20px;
+                left: 25px;
+                font-size: 28px;
+            }
+            .code-link {
+                justify-content: center;
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div id="header">
-        <div id="container">
-            <nav>
-                <h1 id="logo"> <span>N</span>azrawi.</h1>
-                <i id="menu_mark" class="fa-solid fa-bars" onclick="openmenu()"></i>
-                <ul id="sidemenu">
-                    <li><span><i id="close_mark" class="fa-solid fa-xmark" onclick="closemenu()"></i></span></li><br>
-                    <li><span><a href="#header">Home</a></span></li>
-                    <li><span><a href="#about">About</a></span> </li>
-                    <li><span><a href="#services">Services</a></span></li>
-                    <li><span><a href="#portfolio">Portofolio</a></span></li>
-                    <li><span><a href="#contact">Contact</a></span></li>
-                </ul>
+<div id="header">
+    <div class="container">
+        <nav>
+            <h1 id="logo"> <span>N</span>azrawi.</h1>
+            <i id="menu_mark" class="fas fa-bars" onclick="openmenu()"></i>
+            <ul id="sidemenu">
+                <li><span><i id="close_mark" class="fas fa-times" onclick="closemenu()"></i></span></li><br>
+                <li><a href="#header">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Featured Work</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-text">
+            <p>Full-Stack & AI Developer</p>
+            <h1>Hi, I'm <span>Nazrawi</span> <br>based in Winnipeg</h1>
+            <div class="highlight-badge">✨ PHP • JavaScript • Machine Learning • GCP ✨</div>
+        </div>
+    </div>
+</div>
 
-            </nav>
-            <div class="header-text">
-                <p>Web Developer</p>
-                <h1>Hi, I'am <span>Nazrawi</span> <br>Elias From Winnipeg</h1>
+<div id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col1">
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop" alt="coding profile">
             </div>
-        </div>
-    </div>
-<!-----------------about----------->
-    <div id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col1">
-                    <img src="aboutme.jpg" alt="">
+            <div class="col2">
+                <h1 id="subtitle">About Me</h1>
+                <p>Full-Stack Developer with industry experience at Flaxem System Enterprises (Uganda) and NICE (Eritrea), plus strong foundation in AI/ML — including AutoML, neural networks, and time series forecasting. I bridge the gap between robust web applications and intelligent data solutions. Currently expanding my expertise in Canada while volunteering and pursuing high school diploma. Problem-solver, fast learner, and tech advocate.</p>
+                <div class="tab-titles">
+                    <p class="tab-links active-link" onclick="opentab('skills', event)">Skills</p>
+                    <p class="tab-links" onclick="opentab('experience', event)">Experience</p>
+                    <p class="tab-links" onclick="opentab('education', event)">Education & Certs</p>
                 </div>
-                <div class="col2">
-                    <h1 id="subtitle">About Me</h1>
-                    <p>Experienced full-stack and RPA developer with more than two years of experience in the industry.Seeking to<br>
-                       leverage high proficiency in SQL, Python, JavaScript and CSS in a full-time career as a full-stack developer<br>
-                       for NICE (National Insurance Corporation of Eritrea) and IP-Tech (Eritrean Digital transformation enabler)<br>
-                       with more than one year experience. Qualities of fast learning and blend in the environment to quickly adapting<br>
-                       the situations and culture is a rare quality and these strengths are helpful to work in a multi-cultural work<br>
-                       diversity. Respectful to multi-cultural society and ability to effectively work with stability under pressure<br>
-                       is another quality is mastered. With combination of these qualities, I could be a fine asset for any organization.</p>
-                       <div class="tab-titles">
-                        <p class="tab-links active-link" onclick="opentab('skills', event)">Skills</p>
-                        <p class="tab-links" onclick="opentab('experience', event)">Experience</p>
-                        <p class="tab-links" onclick="opentab('education', event)">Education</p>
-                    </div>
-                    <div class="tab-contents active-tab" id='skills'>
-                        <ul>
-                            <li><span>UI/UX</span><br> Design Web</li>
-                            <li><span>Web Development</span><br> Web App Development </li>
-                            <li><span>App Development</span><br> PC Application Development</li>
-                        </ul>
-                    </div>
-                    <div class="tab-contents" id='experience'>
-                        <ul>
-                            <li><span>10/2020 - 09/2023</span><br> Full Stack Developer at National Insurance Corporation Of Eritrea</li>
-                            <li><span>04/2018 - 12/2019</span><br> RPA Developer at Eritrean Digital transformation enabler </li>
-                        </ul>
-                    </div>
-                    <div class="tab-contents" id='education'>
-                        <ul>
-                            <li><span>June, 2019</span><br> Advanced Diploma: Programming and Web designing at Poly Tech Vocational Training Center</li>
-                            <li><span>June, 2018</span><br> Advanced Diploma: Basic Robotics Engineering at Students Educational and Discovery Center</li>
-                            <li><span>June, 2017</span><br> Advanced Diploma: Hardware Engineering and Networking at Delta Institute of Information System</li>
-                            <li><span>July, 2022</span><br> Certificate of High School Achievement at Sawa High School</li>
-                        </ul>
-                    </div>
+                <!-- SKILLS -->
+                <div class="tab-contents active-tab" id='skills'>
+                    <ul>
+                        <li><span>🔹 Programming & Query Languages</span><br>PHP, JavaScript, HTML, CSS, C#, SQL</li>
+                        <li><span>🧠 Machine Learning & AI</span><br>Applied ML, AutoML, Neural Networks, Clustering, Time Series Forecasting, Data Analytics, Data Visualization, Data Science</li>
+                        <li><span>☁️ Cloud & Platforms</span><br>Google Cloud Platform (GCP), Vertex AI</li>
+                        <li><span>🛠️ Tools & Development</span><br>VS Code, Microsoft Office, Google Docs, Sheets & Forms</li>
+                    </ul>
+                </div>
+                <!-- EXPERIENCE -->
+                <div class="tab-contents" id='experience'>
+                    <ul>
+                        <li><span>📌 Full Stack Web Developer</span><br>Flaxem System Enterprises Ltd, Kampala (Jan 2024 – Jul 2025)<br>→ PHP/JS/HTML/CSS web apps, API integrations, critical bug resolution (Centenary Bank), database operations, team collaboration.</li>
+                        <li><span>📌 Full Stack Developer/Programmer</span><br>NICE (National Insurance Corp of Eritrea), Asmara (Oct 2020 – Sep 2023)<br>→ Web/desktop apps, intranet solutions, security audits, system optimization, stakeholder consulting.</li>
+                        <li><span>🌍 Volunteer Translator</span><br>Immigrant Center, Winnipeg (Sep 2025 – Present)<br>→ Helping newcomers understand policies & resources.</li>
+                    </ul>
+                </div>
+                <!-- EDUCATION + CERTS -->
+                <div class="tab-contents" id='education'>
+                    <ul>
+                        <li><span>🎓 High School Diploma (In Progress)</span><br>Winnipeg Adult Education Center</li>
+                        <li><span>📜 ComIT | Artificial Intelligence & Machine Learning</span><br>Completed Dec 19, 2025 – Winnipeg, MB</li>
+                        <li><span>📜 SEDC | Programming, Robotics and Psychology</span><br>Completed Aug 30, 2019 – Asmara, Eritrea</li>
+                        <li><span>📜 Poly Tech | Networking, Hardware Maintenance & Troubleshooting</span><br>Completed Sep 9, 2018 – Asmara, Eritrea</li>
+                        <li><span>📜 Delta | Computer Maintenance Certificate</span><br>Completed May 17, 2017 – Asmara, Eritrea</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
-    <!----------------services-------------->
-    <div id="services">
-        <div class="container">
-            <h1 id="sub-title">My Services</h1>
-            <div class="service-list">
-                <div>
-                    <h2>Web Design</h2>
-                    <p> We create visually stunning, user-friendly websites<br>
-                        that captivate your audience and drive results.</p>
-                    <a href="#">Learn more</a>
-                </div>
-                
-                <div>
-                    <i class="fas fa-code"></i>
-                    <h2>UI/UX Design</h2>
-                    <p>We create visually stunning, user-friendly websites<br>
-                       that captivate your audience and drive results.</p>
-                    <a href="#">Learn more</a>
-                </div>
-                <div>
-                    <h2>App Design</h2>
-                    <p>We create visually stunning, user-friendly websites<br>
-                       that captivate your audience and drive results.</p>
-                    <a href="#">Learn more</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!---------------portfolio------------->
-    <div id="portfolio">
-        <div class="container">
-            <h1 id="sub-title">My Work</h1>
-            <div class="work-list">
-                <div class="work">
-                    <img src="work1.jpg" style="height: 100%;" alt="">
-                    <div class="layer">
-                        <h3>Social Media App</h3>
-                        <p> The app connects you to the talented people around the world.
-                            Downoad it from playstore.</p>
-                        <a href="#"><i class="fas fa-external-link-alt"></i></a>
-                    </div>
-                </div>
-                <div class="work">
-                    <img src="work2.jpg" alt="">
-                    <div class="layer">
-                        <h3>Music App</h3>
-                        <p> The app connects you to the talented people around the world.
-                            Downoad it from playstore.</p>
-                        <a href="#"><i class="fas fa-external-link-alt"></i></a>
-                    </div>
-                </div>
-                <div class="work">
-                    <img src="work3.jpg" alt="">
-                    <div class="layer">
-                        <h3>Online Shopping App</h3>
-                        <p> The app connects you to the talented people around the world.
-                            Downoad it from playstore.</p>
-                        <a href="#"><i class="fas fa-external-link-alt"></i></a>
-                    </div>
-                </div>
-            </div>
-            <a href="#" class="btn">See more</a>
-        </div>
-    </div>
+</div>
 
-    <!--------------contact----------->
+<div id="services">
+    <div class="container">
+        <h1 id="sub-title">What I Do</h1>
+        <div class="service-list">
+            <div>
+                <i class="fas fa-globe"></i>
+                <h2>Web Development</h2>
+                <p>Custom web apps, PHP/JS/C# solutions, API integrations, and database design — secure & scalable.</p>
+            </div>
+            <div>
+                <i class="fas fa-chart-simple"></i>
+                <h2>Data & AI Solutions</h2>
+                <p>Time series forecasting, clustering, AutoML, and data visualization to drive intelligent decisions.</p>
+            </div>
+            <div>
+                <i class="fas fa-cloud-arrow-up"></i>
+                <h2>Cloud & Analytics</h2>
+                <p>Google Cloud Platform & Vertex AI, data pipelines and modern analytics dashboards.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Portfolio - simple with only "View Code" links (no modal, no explore/demo) -->
+<div id="portfolio">
+    <div class="container">
+        <h1 id="sub-title">Featured Project</h1>
+        <div class="work-list">
+            <!-- Project 1: Invoice Calc & Print System -->
+            <div class="work">
+                <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=2070&auto=format&fit=crop" alt="invoice calculator">
+                <div class="layer">
+                    <h3>📄 Invoice Calc & Print System</h3>
+                    <p>Web-based invoice generator with dynamic line items, auto-calculation, tax logic, and print-friendly layout. Built with HTML/CSS/JS + PHP backend (SQL storage).</p>
+                    <a href="https://github.com/nazrawielias/Invoice-Generator" class="code-link" target="_blank" id="githubLinkInvoice"><i class="fab fa-github"></i> View Code</a>
+                </div>
+            </div>
+            <!-- Project 2: -->
+            <div class="work">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop" alt="ML dashboard">
+                <div class="layer">
+                    <h3>🤖 Boosted Tree Classifier (BigQuery ML) Demo</h3>
+                    <p>Diabetes_Analysis_Bigquery_Project predicting diabetes outcomes using BigQuery ML.</p>
+                    <a href="https://github.com/nazrawielias/Diabetes_Analysis_Bigquery_Project" class="code-link" target="_blank" id="githubLinkForecast"><i class="fab fa-github"></i> View Code</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title" style="font-size: 42px; margin-bottom: 25px;">Let’s Connect</h1>
+                <p><i class="fas fa-envelope"></i> nazrawielias@gmail.com</p>
+                <p><i class="fas fa-phone-alt"></i> +1 (204) 290 8188</p>
+                <div class="social-icons">
+                    <a href="https://github.com/nazrawielias/"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/nazrawi-elias-5b075a373/"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+                <a href="Nazrawi_Elias's_Resume.pdf" class="btn btn2">Download CV (PDF)</a>
+            </div>
+            <div class="contact-right">
+                <form>
+                    <input type="text" name="Name" placeholder="Full Name" required>
+                    <input type="email" name="email" placeholder="Email Address" required>
+                    <textarea name="Message" rows="5" placeholder="Tell me about your project or opportunity..."></textarea>
+                    <button type="submit" class="btn btn2">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>© 2025 Nazrawi Elias — Full-Stack Developer & AI Practitioner | Winnipeg, Canada</p>
+    </div>
+</div>
+
+<script>
+    // Tab switching functionality
+    function opentab(tabname, event) {
+        var tablinks = document.getElementsByClassName('tab-links');
+        var tabcontents = document.getElementsByClassName('tab-contents');
+        for (let tl of tablinks) tl.classList.remove("active-link");
+        for (let tc of tabcontents) tc.classList.remove("active-tab");
+        event.currentTarget.classList.add('active-link');
+        document.getElementById(tabname).classList.add("active-tab");
+    }
+
+    // Mobile menu controls
+    let sidemenu = document.getElementById("sidemenu");
+    if(sidemenu) sidemenu.style.right = "-500px";
+    function openmenu() { if(sidemenu) sidemenu.style.right = "0"; }
+    function closemenu() { if(sidemenu) sidemenu.style.right = "-500px"; }
     
-    <div id="contact">
-        <div class="container">
-            <div class="row">
-                <div class="contact-left">
-                    <h1 class="sub-title">Contact Me</h1>
-                    <p><i class="fa-solid fa-paper-plane"></i> nazrawielias@gmail.com</p>
-                    <p><i class="fa-solid fa-square-phone"></i> 2042908188</p>
-                    <div class="social-icons">
-                        <a href="https://facebook.com/"><i class="fab fa-facebook"></i></a>
-                        <a href=""><i class="fab fa-twitter-square"></i></a>
-                        <a href=""><i class="fab fa-instagram"></i></a>
-                        <a href=""><i class="fab fa-linkedin"></i></a>
-                    </div>
-                    <a href="CV Nazrawi Amanuel.  (Updated 31st of July, 2024).pdf" class="btn btn2">Download CV</a>
-                </div>
-                <div class="contact-right">
-                    <form action="">
-                        <input type="text" name="Name" placeholder="Your Name" required>
-                        <input type="email" name="email" placeholder="Your Email" required>
-                        <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
-                        <button type="submit" class="btn btn2"> Submit</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>Copyright Made By Nazrawi</p>
-        </div>
-    </div>
-
-    <script>
-        function opentab(tabname, event){
-            var tablinks = document.getElementsByClassName('tab-links');
-            var tabcontents = document.getElementsByClassName('tab-contents');
-    
-            for (var tablink of tablinks) {
-                tablink.classList.remove("active-link");
-            }
-            for (var tabcontent of tabcontents) {
-                tabcontent.classList.remove("active-tab");
-            }
-            event.currentTarget.classList.add('active-link');
-            document.getElementById(tabname).classList.add("active-tab");
-        }
-    </script>   
-    <script>
-        var sidemenu=document.getElementById("sidemenu");
-        sidemenu.style.right="-500px";
-
-        function openmenu(){
-            sidemenu.style.right="0";
-        }
-
-        function closemenu(){
-            sidemenu.style.right="-500px";
-        }
-    </script>         
+    // Contact form handler
+    document.querySelector("form")?.addEventListener("submit", function(e) {
+        e.preventDefault();
+        alert("✓ Thanks for reaching out! I'll get back to you soon.");
+        this.reset();
+    });
+</script>
 </body>
 </html>
